@@ -1,6 +1,18 @@
-(function () {
+(async function () {
   const ev = window.EVENT;
   const $ = (sel) => document.querySelector(sel);
+
+  // Guests/hosts pushed from Clay override the defaults in event.js.
+  try {
+    const res = await fetch('/api/guests');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.guests && data.guests.length) ev.guests = data.guests;
+      if (data.hosts && data.hosts.length) ev.hosts = data.hosts;
+    }
+  } catch {
+    // No API (e.g. local static preview) — keep event.js content.
+  }
 
   function el(tag, className, text) {
     const node = document.createElement(tag);
@@ -69,11 +81,9 @@
     const frame = el('div', 'photo');
     frame.append(photo(g.photo, g.name, 'Guest photo'));
     const text = el('div', 'guest-text');
-    text.append(
-      el('span', 'name', g.name),
-      el('span', 'title', g.title),
-      el('span', 'company', g.company)
-    );
+    text.append(el('span', 'name', g.name));
+    if (g.title) text.append(el('span', 'title', g.title));
+    if (g.company) text.append(el('span', 'company', g.company));
     card.append(frame, text);
     grid.append(card);
   });
