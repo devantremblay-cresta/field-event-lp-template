@@ -18,7 +18,7 @@ Then open http://localhost:8000.
 
 ## Deploy
 
-Works as-is on GitHub Pages (Settings → Pages → deploy from `main`, root). The page sets `noindex` since guest lists shouldn't be searchable.
+Deployed on Vercel (Framework Preset: Other); every push to `main` redeploys. The page sets `noindex` since guest lists shouldn't be searchable.
 
 ## Clay sync
 
