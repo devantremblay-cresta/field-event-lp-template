@@ -127,7 +127,13 @@ export async function GET() {
       (a.order ?? Infinity) - (b.order ?? Infinity) || a.name.localeCompare(b.name)
   );
 
-  const pick = ({ name, title, company, photo }) => ({ name, title, company, photo });
+  const pick = ({ name, title, company, photo, linkedin_url }) => ({
+    name,
+    title,
+    company,
+    photo,
+    linkedin_url: /^https?:\/\//i.test(linkedin_url || '') ? linkedin_url : '',
+  });
   return json(
     {
       guests: people.filter((p) => p.type === 'guest').map(pick),

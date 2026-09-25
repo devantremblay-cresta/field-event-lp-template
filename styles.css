@@ -50,6 +50,12 @@ a:hover{color:#205AE3}
 .guest .title{font-size:14px;line-height:1.5;color:#737373}
 .guest .company{font-size:14px;line-height:1.5;font-weight:500;color:#0B0B0B}
 
+/* Cards that link to LinkedIn */
+a.is-link{color:inherit;text-decoration:none;cursor:pointer}
+a.is-link:focus-visible{outline:2px solid #205AE3;outline-offset:3px;border-radius:20px}
+a.host.is-link:focus-visible{border-radius:32px}
+a.host.is-link:hover .name{text-decoration:underline;text-underline-offset:3px}
+
 /* Photo / placeholder */
 .photo img,.avatar img{display:block;width:100%;height:100%;object-fit:cover}
 .placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:12px;color:#8A8A8A;text-align:center;padding:4px}

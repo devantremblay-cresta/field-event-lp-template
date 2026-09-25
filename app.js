@@ -32,6 +32,18 @@
     return el('div', 'placeholder', placeholder);
   }
 
+  // Person card: a link to their LinkedIn profile when one is provided.
+  function card(className, person) {
+    const url = person.linkedin_url || '';
+    if (!/^https?:\/\//i.test(url)) return el('div', className);
+    const a = el('a', `${className} is-link`);
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', `${person.name} on LinkedIn`);
+    return a;
+  }
+
   document.title = ev.pageTitle;
   $('#header-meta').textContent = ev.headerMeta;
   $('#guest-count').textContent = `${ev.guests.length} guests`;
@@ -62,7 +74,7 @@
     $('#hosts-label').textContent = ev.hostsLabel;
     const list = $('#host-list');
     ev.hosts.forEach((h) => {
-      const host = el('div', 'host');
+      const host = card('host', h);
       const avatar = el('div', 'avatar');
       avatar.append(photo(h.photo, h.name, 'Photo'));
       const text = el('div', 'host-text');
@@ -77,15 +89,15 @@
   $('#guests-heading').textContent = ev.guestsHeading;
   const grid = $('#guest-grid');
   ev.guests.forEach((g) => {
-    const card = el('div', 'guest');
+    const guest = card('guest', g);
     const frame = el('div', 'photo');
     frame.append(photo(g.photo, g.name, 'Guest photo'));
     const text = el('div', 'guest-text');
     text.append(el('span', 'name', g.name));
     if (g.title) text.append(el('span', 'title', g.title));
     if (g.company) text.append(el('span', 'company', g.company));
-    card.append(frame, text);
-    grid.append(card);
+    guest.append(frame, text);
+    grid.append(guest);
   });
 
   const mail = $('#contact-email');
