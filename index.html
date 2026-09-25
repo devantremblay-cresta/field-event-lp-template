@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cresta Field Event</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <img src="assets/cresta-wordmark-dark.png" alt="Cresta">
+    <span class="meta mono" id="header-meta"></span>
+  </header>
+
+  <main>
+    <section class="intro" data-screen-label="Intro">
+      <div class="intro-head">
+        <div class="eyebrow mono"><span class="dot"></span><span id="guest-count"></span></div>
+        <h1 id="title"></h1>
+      </div>
+      <div class="details" id="details"></div>
+    </section>
+
+    <section class="hosts" id="hosts" data-screen-label="Hosts">
+      <div class="label mono" id="hosts-label"></div>
+      <div class="host-list" id="host-list"></div>
+    </section>
+
+    <section class="guests" data-screen-label="Guests">
+      <h2 id="guests-heading"></h2>
+      <div class="guest-grid" id="guest-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/cresta-wordmark-white.png" alt="Cresta">
+    <span class="contact">Questions? <a id="contact-email"></a></span>
+  </footer>
+
+</div>
+<script src="event.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
